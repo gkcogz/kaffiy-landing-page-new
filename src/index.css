@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Warm Minimalist Modern - Café Palette */
+    --background: 40 33% 98%;
+    --foreground: 30 15% 18%;
+
+    --card: 40 30% 99%;
+    --card-foreground: 30 15% 18%;
+
+    --popover: 40 30% 99%;
+    --popover-foreground: 30 15% 18%;
+
+    /* Primary - Coffee theme (default, will be updated by useTheme hook) */
+    --primary: 28 45% 35%;
+    --primary-foreground: 40 33% 98%;
+
+    /* Secondary - Cream Beige */
+    --secondary: 38 35% 92%;
+    --secondary-foreground: 30 20% 30%;
+
+    --muted: 38 20% 94%;
+    --muted-foreground: 30 12% 45%;
+
+    /* Accent - Soft Sage Green */
+    --accent: 140 20% 92%;
+    --accent-foreground: 140 25% 30%;
+
+    /* Terracotta accent */
+    --terracotta: 18 50% 55%;
+    --terracotta-foreground: 40 33% 98%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 38 20% 88%;
+    --input: 38 20% 88%;
+    --ring: 28 45% 35%;
+
+    --radius: 1rem;
+
+    /* Custom tokens - Warm Café */
+    --warm-cream: 40 40% 96%;
+    --warm-beige: 35 30% 90%;
+    --coffee-light: 28 30% 60%;
+    --coffee-medium: 28 40% 40%;
+    --coffee-dark: 28 50% 22%;
+    --sage-light: 140 18% 94%;
+    --sage-medium: 140 20% 75%;
+
+    /* Shadows - Warm, soft */
+    --shadow-sm: 0 1px 2px 0 hsl(30 15% 18% / 0.03);
+    --shadow-md: 0 4px 16px -2px hsl(30 15% 18% / 0.06);
+    --shadow-lg: 0 16px 32px -4px hsl(30 15% 18% / 0.08);
+    --shadow-card: 0 2px 12px hsl(30 15% 18% / 0.04);
+
+    --sidebar-background: 40 30% 98%;
+    --sidebar-foreground: 30 15% 25%;
+    --sidebar-primary: 28 45% 35%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 38 25% 94%;
+    --sidebar-accent-foreground: 30 15% 22%;
+    --sidebar-border: 38 20% 90%;
+    --sidebar-ring: 28 45% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html {
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body {
+    @apply text-foreground font-body antialiased;
+    background: #F8FAFC;
+    transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  /* Global Grain/Noise Texture - Light Mode Only */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-size: 300px 300px;
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+  }
+
+  html {
+    background: #F8FAFC;
+    transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Text colors - Premium slate tones */
+  h1, h2, h3, h4, h5, h6 {
+    color: #0F172A; /* Slate-900 */
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  p, span:not([class*="text-"]), div:not([class*="text-"]) {
+    color: #1E293B; /* Slate-800 */
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Tema geçişleri için smooth transition - tüm renkli elementler */
+  * {
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                color 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Hover durumlarında transition'ı hızlandır */
+  button:hover,
+  a:hover,
+  .hover\:bg-primary:hover,
+  .hover\:bg-secondary:hover {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .warm-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(40, 33%, 98%) 0%,
+      hsl(38, 30%, 97%) 25%,
+      hsl(40, 35%, 99%) 50%,
+      hsl(38, 35%, 96%) 75%,
+      hsl(40, 33%, 98%) 100%
+    );
+    transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Light mode specific warm gradient variations */
+  .warm-gradient-light {
+    background: linear-gradient(
+      135deg,
+      hsl(40, 33%, 98%) 0%,
+      hsl(38, 30%, 97%) 25%,
+      hsl(40, 35%, 99%) 50%,
+      hsl(38, 35%, 96%) 75%,
+      hsl(40, 33%, 98%) 100%
+    );
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  .card-soft {
+    @apply bg-card rounded-2xl border border-border shadow-card;
+  }
+
+  .phone-mockup {
+    @apply relative bg-foreground rounded-[2.5rem] p-2 shadow-lg;
+  }
+
+  .phone-screen {
+    @apply bg-card rounded-[2rem] overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -30px) scale(1.05);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.95);
+    }
+  }
+}
