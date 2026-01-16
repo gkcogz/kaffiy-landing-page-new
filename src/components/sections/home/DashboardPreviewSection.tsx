@@ -1,5 +1,5 @@
 import { useI18n } from "@/lib/i18n";
-import dashboardImage from "@/assets/kaffiy-dashboard.png";
+import dashboardImage from "@/assets/kaffiy_dashboard_no_bg.png";
 
 export function DashboardPreviewSection() {
   const { t } = useI18n();

@@ -6,7 +6,7 @@ import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/common/Logo";
 import kaffiyTebrikler from "@/assets/kaffiy-tebrikler.png";
-import kaffiyDashboard from "@/assets/kaffiy-dashboard.png";
+import kaffiyDashboardLaptop from "@/assets/kaffiy_dashboard_no_bg.png";
 
 export function HeroSection() {
   const { t, language } = useI18n();
@@ -185,16 +185,14 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right - Laptop + Phone Mockup */}
+          {/* Right - Dashboard + Laptop + Phone Mockup */}
           <div 
             className="relative flex justify-center lg:justify-end animate-fade-in-up order-1 lg:order-2 mb-6 lg:mb-0 lg:w-[50%] xl:w-[52%] lg:z-30 lg:pt-0" 
             style={{ animationDelay: "0.3s" }}
           >
             <div className="relative z-10 flex items-end gap-3 lg:gap-4 max-w-full overflow-visible scale-75 sm:scale-80 md:scale-85 lg:scale-85 xl:scale-90">
-              {/* Laptop mockup with Dashboard */}
-              <div 
-                className="relative flex-shrink-0"
-              >
+              {/* Dashboard + Laptop Image */}
+              <div className="relative flex-shrink-0">
                 {/* Ground shadow - Theme-colored shadow */}
                 <div 
                   className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[140%] h-20 rounded-full blur-2xl transition-all duration-500"
@@ -204,52 +202,12 @@ export function HeroSection() {
                     filter: 'blur(40px)',
                   }}
                 />
-                
-                {/* Laptop screen - Theme-colored shadow */}
-                <div 
-                  className="bg-gradient-to-b from-gray-700 via-gray-800 to-gray-900 rounded-t-xl p-[6px] shadow-2xl relative transition-all duration-500"
+                <img 
+                  src={kaffiyDashboardLaptop}
+                  alt="Kaffiy Dashboard + Laptop" 
+                  className="w-full h-auto relative z-10"
                   style={{
-                    boxShadow: `0 20px 60px hsl(var(--primary) / 0.15), 0 10px 30px hsl(var(--primary) / 0.1), 0 4px 12px rgba(0, 0, 0, 0.08)`,
-                  }}
-                >
-                  {/* Inner glow effect */}
-                  <div 
-                    className="absolute inset-[6px] rounded-t-lg pointer-events-none z-10"
-                    style={{
-                      background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 60%)',
-                      boxShadow: 'inset 0 0 60px rgba(255,255,255,0.05)',
-                    }}
-                  />
-                  
-                  <div className="bg-white rounded-t-lg overflow-hidden relative flex items-center justify-center" style={{ width: 'min(380px, 90%)', maxWidth: '520px', minHeight: '260px' }}>
-                    <img 
-                      src={kaffiyDashboard}
-                      alt="Kaffiy Dashboard" 
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Screen glow overlay */}
-                    <div 
-                      className="absolute inset-0 pointer-events-none z-10 transition-opacity duration-500"
-                      style={{
-                        background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%, rgba(0,0,0,0.1) 100%)',
-                      }}
-                    />
-                    {/* Diagonal glare effect - glass reflection */}
-                    <div 
-                      className="absolute inset-0 pointer-events-none z-20 transition-opacity duration-500"
-                      style={{
-                        background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 25%, transparent 50%)',
-                        clipPath: 'polygon(0 0, 100% 0, 60% 100%, 0 100%)',
-                      }}
-                    />
-                  </div>
-                </div>
-                
-                {/* Laptop base - single base with depth */}
-                <div 
-                  className="bg-gradient-to-b from-gray-600 to-gray-700 h-4 rounded-b-lg mx-[-8px] shadow-lg relative"
-                  style={{
-                    boxShadow: '0 10px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
+                    maxWidth: '520px',
                   }}
                 />
               </div>

@@ -39,6 +39,7 @@ export function PartnersSection() {
     {
       name: "Haliç Kahve",
       logo: HalicKahveLogo,
+      url: "https://www.instagram.com/halickahve/",
     },
   ];
 
@@ -72,12 +73,8 @@ export function PartnersSection() {
           <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
             {partners.map((partner, index) => {
               const LogoComponent = partner.logo;
-              return (
-                <div
-                  key={index}
-                  className="group flex flex-col items-center justify-center px-8 py-6 bg-card rounded-2xl border border-border shadow-card hover:shadow-lg hover:border-primary/20 transition-all duration-300 animate-fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+              const content = (
+                <>
                   {LogoComponent && (
                     <div className="mb-4 w-24 h-24 bg-black rounded-xl p-3 flex items-center justify-center group-hover:scale-105 transition-transform">
                       <LogoComponent className="w-full h-full" />
@@ -86,6 +83,31 @@ export function PartnersSection() {
                   <span className="text-xl md:text-2xl font-heading font-semibold text-foreground group-hover:text-primary transition-colors">
                     {partner.name}
                   </span>
+                </>
+              );
+
+              if (partner.url) {
+                return (
+                  <a
+                    key={index}
+                    href={partner.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-center justify-center px-8 py-6 bg-card rounded-2xl border border-border shadow-card hover:shadow-lg hover:border-primary/20 transition-all duration-300 animate-fade-in-up cursor-pointer"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {content}
+                  </a>
+                );
+              }
+
+              return (
+                <div
+                  key={index}
+                  className="group flex flex-col items-center justify-center px-8 py-6 bg-card rounded-2xl border border-border shadow-card hover:shadow-lg hover:border-primary/20 transition-all duration-300 animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {content}
                 </div>
               );
             })}
